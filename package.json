@@ -1,0 +1,23 @@
+{
+  "name": "notion_automation",
+  "version": "1.0.0",
+  "description": "Automate notion workspace for SRL and active recall",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/leykun-gizaw/notion_automation.git"
+  },
+  "author": "Leykun Gizaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leykun-gizaw/notion_automation/issues"
+  },
+  "homepage": "https://github.com/leykun-gizaw/notion_automation#readme",
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "dotenv": "^16.4.5"
+  }
+}
