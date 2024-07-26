@@ -4,7 +4,8 @@
   "description": "Automate notion workspace for SRL and active recall",
   "main": "index.js",
   "scripts": {
-    "run": "./node_modules/.bin/nodemon.js"
+    "monitor": "./node_modules/.bin/nodemon app.js",
+    "serve": "node app.js"
   },
   "repository": {
     "type": "git",
