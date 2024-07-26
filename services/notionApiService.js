@@ -18,6 +18,17 @@ const notionService = {
     });
     return notionResponse.results;
   },
+  getAllDatabasePages: async function () {
+    const allPages = [];
+    const allDatabases = await this.getDatabases();
+
+    for (db of allDatabases) {
+      let pages = await this.getDbPages(db.id);
+      allPages.push(...pages);
+    }
+
+    return allPages;
+  },
 };
 
 module.exports = notionService;
