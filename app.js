@@ -8,11 +8,13 @@ require("dotenv").config();
 
 const express = require("express");
 const notionRoutes = require("./routes/notionRoutes");
+const gCalRoutes = require("./routes/gCalRoutes");
 
 // Create an express app
 const app = express();
 
 app.use("/notion", notionRoutes);
+app.use("/gcal", gCalRoutes);
 
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to Total Recall</h1>");
