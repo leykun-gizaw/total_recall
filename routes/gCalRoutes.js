@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 const gCalController = require("../controllers/googleCalendarApiController");
+const gAuth = require("../middleware/googleOAuth");
 
 const router = express.Router();
 router.use(bodyParser.json());
@@ -15,10 +16,9 @@ router.use(
   })
 );
 
-router.get("/authorize", gCalController.authorize);
-router.get("/oauth2callback", gCalController.oauth2callback);
+router.get("/oauth2callback", gAuth.oauth2callback);
 
-router.get("/events", gCalController.getEvents);
-router.get("/createevent/", gCalController.createEvent);
+router.get("/events", gAuth.authenticate, gCalController.getEvents);
+router.get("/createevent/", gAuth.authenticate, gCalController.createEvent);
 
 module.exports = router;
