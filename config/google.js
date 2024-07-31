@@ -1,10 +1,8 @@
 const { google } = require("googleapis");
-const creds = require("../client_secret.json");
 
 const oauth2Client = new google.auth.OAuth2(
-  creds.web.client_id,
-  creds.web.client_secret,
-  creds.web.redirect_uris
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET,
+  process.env.GOOGLE_REDIRECT_URI
 );
-
 module.exports = oauth2Client;
