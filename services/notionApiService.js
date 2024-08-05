@@ -11,7 +11,10 @@ const notionService = {
 
     return search.results;
   },
-
+  getDbById: async (db_id) => {
+    const db = await notion.databases.retrieve({ database_id: db_id });
+    return db;
+  },
   getDbPages: async (dbId) => {
     const notionResponse = await notion.databases.query({
       database_id: dbId,
