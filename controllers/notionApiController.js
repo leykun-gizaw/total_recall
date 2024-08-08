@@ -18,6 +18,9 @@ const notionController = {
   getAllPages: async (req, res) => {
     res.json(await notionService.getAllDatabasePages());
   },
+  getPage: async (req, res) => {
+    res.json(await notionService.getPageById(req.params["page_id"]));
+  },
 };
 
 module.exports = notionController;

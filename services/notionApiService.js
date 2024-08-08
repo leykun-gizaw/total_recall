@@ -32,6 +32,10 @@ const notionService = {
 
     return allPages;
   },
+  getPageById: async (page_id) => {
+    const page = await notion.pages.retrieve({ page_id: page_id });
+    return page;
+  },
 };
 
 module.exports = notionService;
