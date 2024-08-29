@@ -9,8 +9,16 @@ const gCalController = {
     const response = await gCalService.createEvent(req);
     res.json(response);
   },
-  getDateEvent: (req, res) => {
+  getTodayEvent: (req, res) => {
     console.log(`Getting events of ${req.params.date}`);
+  },
+  getEventById: async (req, res) => {
+    const event = await gCalService.getEventById(req, req.params.eventId);
+    if (event) {
+      res.send(event);
+    } else {
+      res.status(404).send("Event not found");
+    }
   },
 };
 

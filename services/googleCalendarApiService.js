@@ -10,6 +10,20 @@ const gCalService = {
       calendarId: "primary",
     });
   },
+  getEventById: async (req, eventId) => {
+    const gcal = google.calendar({ version: "v3" });
+
+    try {
+      const event = await gcal.events.get({
+        auth: req.session.oauth2Client,
+        calendarId: "primary",
+        eventId,
+      });
+      return event;
+    } catch (error) {
+      console.log("Error retrieving event");
+    }
+  },
   createEvent: async (req) => {
     const gcal = google.calendar({ version: "v3" });
 
