@@ -1,20 +1,18 @@
 const { google } = require("googleapis");
+const moment = require("moment-timezone");
+
+const gCal = google.calendar({ version: "v3" });
 
 const gCalService = {
   getEvents: (req) => {
-    const gcal = google.calendar({
-      version: "v3",
-      auth: req.session.oauth2Client,
-    });
-    return gcal.events.list({
+    return gCal.events.list({
       calendarId: "primary",
+      auth: req.session.oauth2Client,
     });
   },
   getEventById: async (req, eventId) => {
-    const gcal = google.calendar({ version: "v3" });
-
     try {
-      const event = await gcal.events.get({
+      const event = await gCal.events.get({
         auth: req.session.oauth2Client,
         calendarId: "primary",
         eventId,
@@ -24,9 +22,23 @@ const gCalService = {
       console.log("Error retrieving event");
     }
   },
-  createEvent: async (req) => {
-    const gcal = google.calendar({ version: "v3" });
+  getTodayEvents: async (req) => {
+    const startDate = moment
+      .tz("Africa/Addis_Ababa")
+      .startOf("D")
+      .toISOString();
+    const endDate = moment.tz("Africa/Addis_Ababa").endOf("D").toISOString();
 
+    const todayEvents = await gCal.events.list({
+      calendarId: "primary",
+      auth: req.session.oauth2Client,
+      timeMin: startDate,
+      timeMax: endDate,
+    });
+
+    return todayEvents;
+  },
+  createEvent: async (req) => {
     const event = {
       summary: "Some Event",
       description: "Some description",
@@ -41,7 +53,7 @@ const gCalService = {
     };
 
     try {
-      const response = await gcal.events.insert({
+      const response = await gCal.events.insert({
         auth: req.session.oauth2Client,
         calendarId: "primary",
         resource: event,

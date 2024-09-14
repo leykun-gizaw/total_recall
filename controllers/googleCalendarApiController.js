@@ -9,8 +9,9 @@ const gCalController = {
     const response = await gCalService.createEvent(req);
     res.json(response);
   },
-  getTodayEvent: (req, res) => {
-    console.log(`Getting events of ${req.params.date}`);
+  getTodayEvents: async (req, res) => {
+    const response = await gCalService.getTodayEvents(req);
+    res.send(response);
   },
   getEventById: async (req, res) => {
     const event = await gCalService.getEventById(req, req.params.eventId);
