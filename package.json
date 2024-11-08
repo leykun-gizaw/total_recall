@@ -1,22 +1,22 @@
 {
-  "name": "notion_automation",
+  "name": "total_recall",
   "version": "1.0.0",
   "description": "Automate notion workspace for SRL and active recall",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "monitor": "./node_modules/.bin/nodemon app.js",
     "serve": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/leykun-gizaw/notion_automation.git"
+    "url": "git+ssh://git@github.com/leykun-gizaw/total_recall.git"
   },
   "author": "Leykun Gizaw",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leykun-gizaw/notion_automation/issues"
+    "url": "https://github.com/leykun-gizaw/total_recall/issues"
   },
-  "homepage": "https://github.com/leykun-gizaw/notion_automation#readme",
+  "homepage": "https://github.com/leykun-gizaw/total_recall#readme",
   "dependencies": {
     "@notionhq/client": "^2.2.15",
     "dotenv": "^16.4.5",
